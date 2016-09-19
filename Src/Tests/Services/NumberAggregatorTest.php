@@ -7,7 +7,16 @@ use ResearchGate\Src\Services\NumberAggregator;
 class NumberAggregatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * /**
      * @dataProvider aggregationDataProvider
+     *
+     * @param $lowerLimit
+     * @param $UpperLimit
+     * @param $expectedMin
+     * @param $expectedMax
+     * @param $expectedSum
+     * @param $expectedAverage
+     * @param $expectedCount
      */
     public function testAggregate(
         $lowerLimit,

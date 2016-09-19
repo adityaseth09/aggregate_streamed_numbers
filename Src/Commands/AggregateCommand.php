@@ -2,6 +2,7 @@
 
 namespace ResearchGate\Src\Commands;
 
+use ResearchGate\Src\Model\AggregatedValues;
 use ResearchGate\Src\Model\RandomOrgApiSettings;
 use ResearchGate\Src\Services\NumberAggregator;
 use ResearchGate\Src\Services\StreamToNumberIterator;
@@ -82,11 +83,14 @@ class AggregateCommand extends Command
     }
 
     /**
-     * @param $numberAggregator
-     * @param $streamToNumberIterator
-     * @return mixed
+     * @param NumberAggregator $numberAggregator
+     * @param StreamToNumberIterator $streamToNumberIterator
+     * @param OutputInterface $output
      */
-    private function aggregateConsoleInput($numberAggregator, $streamToNumberIterator, OutputInterface $output)
+    private function aggregateConsoleInput(
+        NumberAggregator $numberAggregator,
+        StreamToNumberIterator $streamToNumberIterator,
+        OutputInterface $output)
     {
         $fh = fopen('php://stdin', 'r');
         $read = array($fh);
@@ -108,9 +112,9 @@ class AggregateCommand extends Command
 
     /**
      * @param OutputInterface $output
-     * @param $aggregatedValues
+     * @param AggregatedValues $aggregatedValues
      */
-    private function printValues(OutputInterface $output, $aggregatedValues)
+    private function printValues(OutputInterface $output, AggregatedValues $aggregatedValues)
     {
         $output->writeln("count: " . $aggregatedValues->getCountOfNumbers());
         $output->writeln("sum:" . $aggregatedValues->getSum());

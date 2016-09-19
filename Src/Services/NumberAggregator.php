@@ -13,6 +13,10 @@ class NumberAggregator
     /** @var int */
     private $max;
 
+    /**
+     * @param int $minimumPossibleValue
+     * @param int $maximumPossibleValue
+     */
     public function __construct($minimumPossibleValue, $maximumPossibleValue)
     {
         $this->min = $maximumPossibleValue;//PHP_INT_MAX;
